@@ -7,13 +7,14 @@ const ListingContainer = () => {
 
 
     return (
+
         <div className="listingContainer">
-            <div>
-                
-            </div>
-                <ListingCard/>
+
+            <ListingCard >              
+            </ListingCard>
+               
         </div>
     )
 }
 
-export default ListingContainer
+export default ListingContainer;

@@ -9,6 +9,7 @@ import {
 
 /* Importing CSS */
 import "../assets/css/App.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 /* Importing Pages */
 import HomePage from '../pages/HomePage';

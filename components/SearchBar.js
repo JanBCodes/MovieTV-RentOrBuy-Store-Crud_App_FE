@@ -11,9 +11,9 @@ const SearchBar = () => {
 
     return (
         <div className="searchBarContainer">
-            <form action="/movies">
+            <form className="searchForm" action="/movies/search" method="POST">
                 <input type="text" placeholder="Search.." name="search"/>
-                <button type="submit"> <FaSearchengin/> </button>
+                <button className="searchActionButton" type="submit"> <FaSearchengin/> </button>
             </form>
         </div>
     )
