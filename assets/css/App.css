@@ -78,7 +78,7 @@ header > .navbar
 {
     background-color: #F652A0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
 }
 
 footer > .navbar

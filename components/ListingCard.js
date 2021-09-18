@@ -1,46 +1,52 @@
 import React from 'react';
+
+/* Importing BS Components */
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image';
 
-import Card from 'react-bootstrap/Card'
-import Col from 'react-bootstrap/Col'
-import Image from 'react-bootstrap/Image'
+const ListingCard = (props) => {
 
+    let dataArray;
+    dataArray = props.info
 
-const listingCard = ({props}) => {
-
-    // console.log(props)
-    
     return (
-        
-        <Card className="cards">
-            <Card.Img variant="top" src="" />
-            
-            <Card.Body>
-                <Col xs={6} md={4}>
-                    <Image src="holder.js/171x180" rounded />
-                    <Image src="holder.js/171x180" thumbnail />
+        <>
+        {dataArray.map((data) => ( //
 
-                </Col>
+            <Card className="cards" key={data._id}>
+                <Card.Img variant="top" src={data.smallPosterImg} />
 
-                <Card.Title></Card.Title>
-                <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
-                </Card.Text>
-            </Card.Body>
+                <Card.Body>
+                    <Col xs={6} md={4}>
+                        <Image src="holder.js/171x180" thumbnail />
+                    </Col>
 
-            <ListGroup className="list-group-flush">
-                <ListGroupItem>Cras justo odio</ListGroupItem>
-                <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-                <ListGroupItem>Vestibulum at eros</ListGroupItem>
-            </ListGroup>
+                    <Card.Title> 
+                        {data.title}
+                    </Card.Title>
+                    <Card.Text>
+                        {data.synopsis.substring(0,100)}...
+                    </Card.Text>
+                </Card.Body>
 
-            {/* <Card.Body>
-                <Card.Link href="#"> BUY</Card.Link>
-                <Card.Link href="#">Another Link</Card.Link>
-            </Card.Body> */}
-        </Card>
+                <ListGroup className="list-group-flush">
+                    <ListGroupItem>Rent: ${data.priceToRent}</ListGroupItem>
+                    <ListGroupItem>Buy: ${data.priceToBuy}</ListGroupItem>
+                    {/* <ListGroupItem>Vestibulum at eros</ListGroupItem> */}
+                </ListGroup>
+
+                {/* <Card.Body>
+                    <Card.Link href="#"> BUY</Card.Link>
+                    <Card.Link href="#">RENT </Card.Link>
+                </Card.Body> */}
+
+            </Card>
+        ))} 
+
+        </>
     )
 }
 
-export default listingCard;
+export default ListingCard;

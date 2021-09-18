@@ -1,18 +1,15 @@
 import React from 'react'
 
-import ListingCard from '../components/ListingCard'
+import ListingCard from '../components/ListingCard.js';
 
-const ListingContainer = () => {
+const ListingContainer = (props) => {
 
-
+    let dataArray = props.info
 
     return (
 
         <div className="listingContainer">
-
-            <ListingCard >              
-            </ListingCard>
-               
+            <ListingCard info={dataArray}/>                           
         </div>
     )
 }

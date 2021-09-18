@@ -15,26 +15,32 @@ const Header = () => {
             <Navbar className="navbar" expand="lg">
                 <Container>
 
-                    <Image className="logo" src={Logo} roundedCircle />
+                    <Nav.Link href="/">
+                        <Image className="logo" src={Logo} roundedCircle />
+                    </Nav.Link>
 
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Toggle aria-controls="basic-navbar-nav"/>
 
                     <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href="movies">Movies</Nav.Link>
                         <Nav.Link href="tvShows">Tv Shows</Nav.Link>
+                    </Nav>
 
-                        <NavDropdown title="My Account" id="basic-nav-dropdown">
+                    <NavDropdown title="My Account" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Register</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#action/3.2"> Log In </NavDropdown.Item>
                         </NavDropdown>
-                    </Nav>
+
                     </Navbar.Collapse>
                 </Container>
 
-                    <SearchBar/>
+                    {/* <SearchBar/> */}
             </Navbar>
+
+            <SearchBar/>
+
            
          </header>
     )

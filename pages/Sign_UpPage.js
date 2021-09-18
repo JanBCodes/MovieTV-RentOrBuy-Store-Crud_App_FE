@@ -8,4 +8,4 @@ const Sign_UpPage = () => {
     )
 }
 
-export default Sign_UpPage
+export default Sign_UpPage;
