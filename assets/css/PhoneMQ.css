@@ -1,0 +1,25 @@
+@media (min-width: 300.00px) and (max-width: 675.98px) {
+  
+    
+    #dashBoardCards
+    {
+        grid-template-columns: 1fr;
+        font-size: .8rem;
+        justify-self: center;
+        margin: auto;
+    }
+
+    #dashBoardCards > a
+    {
+        margin: .2rem;
+    }
+
+    .listingContainer 
+    {
+        grid-template-columns: 1fr 1fr 1fr ;
+        column-gap: 3px;
+    }
+
+};
+
+  

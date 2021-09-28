@@ -7,8 +7,6 @@ import Button from 'react-bootstrap/Button';
 
 const ModalFn = () => {
       
-// function Example() {
-
 //     const [show, setShow] = useState(false);
   
 //     const handleClose = () => setShow(false);

@@ -1,9 +1,26 @@
-import React from 'react'
+import React from 'react';
+
+/* Importing Components */
+import Header from "../components/Header.js";
+import Footer from "../components/Footer.js";
+import LogIn from '../components/LogIn.js';
 
 const Log_InPage = () => {
+
+
     return (
-        <div>
+
+        
+        <div className="LogInPage">
             
+            <Header/>
+
+            <main>
+                <LogIn/>
+            </main>
+
+            <Footer/>     
+
         </div>
     )
 }

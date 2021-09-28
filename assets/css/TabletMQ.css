@@ -1,0 +1,9 @@
+@media (min-width: 675.99px) and (max-width: 1000.98px) {
+
+    .listingContainer 
+    {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+
+}  
