@@ -1,15 +1,24 @@
 import React from 'react';
+import { useContext } from 'react';
 
 import { Link } from "react-router-dom";
 
-import { Navbar, NavDropdown, Nav, Container, Image} from 'react-bootstrap'
+import { Navbar, NavDropdown, Nav, Container, Image} from 'react-bootstrap';
 
 import Logo from "../assets/img/logo.jpeg";
 import SearchBar from "../components/SearchBar.js";
 
+import LocationContext from '../context/LocationContext.js';
+
 const Header = () => {
 
+    const {setRoute} = useContext(LocationContext);
 
+    const setRouteLocation = (evt) => {
+
+        setRoute({location: evt.target.name})
+
+    }
 
     return (
         <header className="headerContainer">
@@ -18,14 +27,16 @@ const Header = () => {
 
                     <Link to="/">
                         <Image className="logo" src={Logo} roundedCircle />
+                        <span>Bored Buster Entertainment</span>
                     </Link>
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
 
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Link to="/movies">Movies</Link>
-                            <Link to="/tvShows">Tv Shows</Link>
+                            <div><Link to="/movies" name="movies" onClick={setRouteLocation}>Movies</Link></div>
+                            <NavDropdown.Divider />
+                            <div><Link to="/tvShows" name="tvShows" onClick={setRouteLocation}>Tv Shows</Link></div>
                         </Nav>
 
                         <NavDropdown title="My Account" id="basic-nav-dropdown">

@@ -46,7 +46,7 @@ const AdminCreatePage = () => {
 
                 <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
                 <Form.Label column sm={2}>
-                Email
+                    Email
                 </Form.Label>
                 <Col sm={10}>
                 <Form.Control value={user.email} onChange={e => setUser({...user, email: e.target.value})} type="email" placeholder="Email" />
@@ -55,7 +55,7 @@ const AdminCreatePage = () => {
 
                 <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
                 <Form.Label column sm={2}>
-                Password
+                    Password
                 </Form.Label>
                 <Col sm={10}>
                 <Form.Control value={user.password}  onChange={e => setUser({...user, password: e.target.value})} type="text" placeholder="Password" />
@@ -64,13 +64,13 @@ const AdminCreatePage = () => {
 
                 <Form.Group as={Row} className="mb-3" controlId="formHorizontalCheck">
                 <Col sm={{ span: 10, offset: 2 }}>
-                <Form.Check label="Remember me" />
+                    <Form.Check label="Remember me" />
                 </Col>
                 </Form.Group>
 
                 <Form.Group as={Row} className="mb-3">
                 <Col sm={{ span: 10, offset: 2 }}>
-                <Button type="submit"> Log In </Button>
+                    <Button type="submit"> Log In </Button>
                 </Col>
                 </Form.Group>
 

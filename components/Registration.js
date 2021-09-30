@@ -12,6 +12,7 @@ const Registration = () => {
 
 
     return (
+        
         <div className="registration">
             <h1> Registration </h1>
 

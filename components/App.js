@@ -30,6 +30,10 @@ import TVshowsContext from '../context/FTTVShowsContext.js';
 import AllNewReleases from '../context/AllNewReleasesContext.js';
 import AllTVShowsContext from '../context/AllTVShowsContext.js';
 import UserContext from '../context/LogInContext.js';
+import LocationContext from '../context/LocationContext.js'
+
+/* Import Data Access Object */
+import RESTAPI from '../modules/DAO.js';
 
 const App = () => {
 
@@ -40,62 +44,58 @@ const App = () => {
     const [allNewReleases, setAllNewReleases] = useState([]); 
     const [allTVShows, setAllTVShows] = useState([]); 
     const [user, setUser] = useState({email: "", password: ""})
+    const [location, setRoute] = useState({location: ""})
+
+
     // const [modalStatus, setModalStatus] = useState(false);
 
 
     useEffect(()=>{
 
-        const backEndHost = `http://localhost:3500`
+        const backEndHost = `http://localhost:3500`;
 
-        fetch(`${backEndHost}/movies/`)
-        
-        .then(res => res.json())
-        .then(data => {
+        const fetchData = new RESTAPI();
+
+        fetchData.getAPIData(`${backEndHost}/Movies/`)
+        .then((data) => {
 
             setAllMovies(data.data)
         })
 
-        fetch(`${backEndHost}/tvShows/`)
-        
-        .then(res => res.json())
-        .then(data => {
+        fetchData.getAPIData(`${backEndHost}/tvShows/`)
+        .then((data) => {
 
             setAllTVShows(data.data)
         })
 
-
-        fetch(`${backEndHost}/movies?featMovie=true`)
-        
-        .then(res => res.json())
-        .then(data => {
+        fetchData.getAPIData(`${backEndHost}/movies?featMovie=true`)
+        .then((data) => {
 
             setAllFTMovies(data.data)
-
         })
 
-        fetch(`${backEndHost}/tvShows?featTV=true`)
-        
-        .then(res => res.json())
-        .then(data => {
-          
+        fetchData.getAPIData(`${backEndHost}/tvShows?featTV=true`)
+        .then((data) => {
+
             setAllFTTVshows(data.data)
         })
 
-        fetch(`${backEndHost}/movies?isNewMovie=y`)
-        
-        .then(res => res.json())
-        .then(data => {
-          
-            setAllNewReleases(data.data)
+        fetchData.getAPIData(`${backEndHost}/tvShows?featTV=true`)
+        .then((data) => {
 
+            setAllFTTVshows(data.data)
+        })
+        
+        fetchData.getAPIData(`${backEndHost}/movies?isNewMovie=y`)
+        .then((data) => {
+
+            setAllNewReleases(data.data)
         })
 
         .catch ((err)=>{
 
             console.log(err)
-        })
-
-        
+        })       
     
       },[]);
 
@@ -112,12 +112,9 @@ const App = () => {
             <AllNewReleases.Provider value = {{allNewReleases, setAllNewReleases}}>
             <AllTVShowsContext.Provider value = {{allTVShows, setAllTVShows}}>
             <UserContext.Provider value = {{user, setUser}}>
+            <LocationContext.Provider value = {{location, setRoute}}>
 
-
-                
-
-
-
+            
                 <Route exact path = "/">
                     <HomePage/>
                 </Route>
@@ -129,12 +126,12 @@ const App = () => {
                 <Route path = "/tvShows">
                     <ListingPage/>
                 </Route>
-
+                
                 <Route path = "/admin/dashBoard">
                     <AdminPage/>
                 </Route>
 
-                <Route path = "/admin/Create">
+                <Route path = "/admin/create">
                     <AdminCreatePage/>
                 </Route>
 
@@ -146,7 +143,7 @@ const App = () => {
                     <SignUpPage/>
                 </Route>
 
-
+            </LocationContext.Provider>
             </UserContext.Provider>
             </AllTVShowsContext.Provider>
             </AllNewReleases.Provider>

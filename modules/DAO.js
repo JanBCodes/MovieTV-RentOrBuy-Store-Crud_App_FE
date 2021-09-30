@@ -20,4 +20,4 @@ class RESTAPI
 };
 
 
-export default RESTAPI;
+export default RESTAPI

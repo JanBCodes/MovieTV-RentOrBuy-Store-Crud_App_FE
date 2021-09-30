@@ -13,7 +13,7 @@ const LogIn = () => {
     // const [message, setMessage] = useState({message: null})
 
     const {user, setUser} = useContext(UserContext);
-    const redirect = useHistory()
+    const redirect = useHistory();
 
     const verifyUserCredentials = (evt) => {
 
