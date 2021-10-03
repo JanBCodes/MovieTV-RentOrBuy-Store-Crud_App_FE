@@ -27,22 +27,21 @@ const Header = () => {
 
                     <Link to="/">
                         <Image className="logo" src={Logo} roundedCircle />
-                        <span>Bored Buster Entertainment</span>
+                        <div id="companyName"> Bored Buster Entertainment </div>
                     </Link>
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
 
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto">
-                            <div><Link to="/movies" name="movies" onClick={setRouteLocation}>Movies</Link></div>
-                            <NavDropdown.Divider />
-                            <div><Link to="/tvShows" name="tvShows" onClick={setRouteLocation}>Tv Shows</Link></div>
+                        <Nav className="me-auto" id="me-auto">
+                            <Link to="/movies" name="movies" onClick={setRouteLocation}>Movies</Link>
+                            <Link to="/tvShows" name="tvShows" onClick={setRouteLocation}>Tv Shows</Link>
                         </Nav>
 
                         <NavDropdown title="My Account" id="basic-nav-dropdown">
                             <Link to="/register">Register </Link> 
                             <NavDropdown.Divider />
-                            <Link to="/login">Log In  </Link> 
+                            <Link to="/login">Log In </Link> 
                         </NavDropdown>
 
                     </Navbar.Collapse>

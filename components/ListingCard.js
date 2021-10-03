@@ -26,18 +26,16 @@ const ListingCard = (props) => {
         <>
         {dataArray.map((data) => ( //
 
-            <Link to={`/${data.type}/${data._id}`}>
-                <Card className="cards" id={data._id} key={data._id} onClick={displayListing}>
+            <Link to={`/${data.type}/${data._id}`} key={data._id} >
+                <Card className="cards" id={data._id} key={data._id}onClick={displayListing}>
                     <Card.Img variant="top" src={data.smallPosterImg} />
 
                     <Card.Body >
-                        <Col xs={6} md={4}>
-                            <Image src="holder.js/171x180" thumbnail />
-                        </Col>
-
                         <Card.Title> 
                             {data.title}
                         </Card.Title>
+                    </Card.Body>
+                    <Card.Body >
                         <Card.Text>
                             {data.synopsis.substring(0,100)}...
                         </Card.Text>

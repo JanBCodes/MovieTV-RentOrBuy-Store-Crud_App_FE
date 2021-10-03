@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { FaSearchengin } from 'react-icons/fa';
-
 const SearchBar = () => {
 
 
@@ -10,10 +8,13 @@ const SearchBar = () => {
 
 
     return (
+
         <div className="searchBarContainer">
             <form className="searchForm" action="/movies/search" method="POST">
                 <input type="text" placeholder="Search All Movies and TV Shows." name="search"/>
-                <button className="searchActionButton" type="submit"> <FaSearchengin/> </button>
+                <button className="searchMovies" type="submit"> M </button>
+                <button className="searchTvShows" type="submit"> TV </button>
+
             </form>
         </div>
     )

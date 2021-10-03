@@ -43,7 +43,12 @@ const App = () => {
     const [allFTTVshows, setAllFTTVshows] = useState([]); 
     const [allNewReleases, setAllNewReleases] = useState([]); 
     const [allTVShows, setAllTVShows] = useState([]); 
-    const [user, setUser] = useState({email: "", password: ""})
+    const [user, setUser] = useState({
+                firstName: "",
+                lastName: "",
+                email: "",
+                password: ""
+            })
     const [location, setRoute] = useState({location: ""})
 
 
@@ -56,7 +61,7 @@ const App = () => {
 
         const fetchData = new RESTAPI();
 
-        fetchData.getAPIData(`${backEndHost}/Movies/`)
+        fetchData.getAPIData(`${backEndHost}/movies/`)
         .then((data) => {
 
             setAllMovies(data.data)
@@ -101,7 +106,7 @@ const App = () => {
 
     return (
 
-    <div className="container">
+    // <div className="container">
             
     <Router>
         <Switch>
@@ -142,6 +147,7 @@ const App = () => {
                 <Route path = "/register">
                     <SignUpPage/>
                 </Route>
+                
 
             </LocationContext.Provider>
             </UserContext.Provider>
@@ -154,7 +160,7 @@ const App = () => {
         </Switch>
     </Router>
 
-    </div>
+    // </div>
   )
 }
 

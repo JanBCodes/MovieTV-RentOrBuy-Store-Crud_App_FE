@@ -4,15 +4,6 @@
     --LighterBGColour2: #BCECE0;
     --TextColour1: #F652A0;
     --TextColour2: #36EEE0;
-
-    /* Grids */
-    /* 
-    align-items: center; 
-    align-self: center;
-    justify-items: center;
-    justify-self: center;
-    justify-content: center; 
-    */
 }
 
 *
@@ -23,44 +14,100 @@
     font-size: 18px;
 }
 
+/*************************************************** 
+                                            Root
+****************************************************/
 #root
 {
     background-color: var(--DarkestBGColour1);
-     /* background-size: cover; */
-    /* margin: auto auto; */
-    max-width: 100vw;
-    min-height: 100vh;
-    position:relative;
+    font-family: 'Playfair Display', serif;
+}
 
+/*************************************************** 
+                                            Header 
+****************************************************/
+.headerContainer
+{    
+    position: -webkit-sticky;
+    top: 0;
+    position: sticky;
+    z-index: 1;
+}
+
+.headerContainer > .navbar
+{
+    background-color: #F652A0;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.headerContainer > .navbar > .container
+{
+    background-color: #F652A0;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+}
+
+.headerContainer > .navbar > .container > a
+{
+    background-color: #F652A0;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
 }
 
 .logo
 {
     height: 3rem;
-}
-.carousel
-{
-    background-color: black;
-    height: 100vh;
+    margin: .5rem auto ;
 }
 
-/* // Make responsive */
-.listingContainer 
+#companyName
+{
+    font-size: 2rem;
+    text-align: left;
+    margin: auto auto;
+}
+
+.container > #basic-navbar-nav 
 {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    column-gap: 5px;
+    grid-template-columns: 1fr 1fr;
+    justify-content: right;
 }
+
+.me-auto, #me-auto
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column: 2em;
+    text-align: right;
+    margin-left: 0;
+    margin: 0 1rem;
+}
+
+#me-auto > a
+{
+    margin: 0 1rem;
+}
+
+.dropdown-menu 
+{
+    text-align: center;
+}
+
+/*************************************************** 
+                                        Search Bar 
+****************************************************/
 .searchBarContainer
 {
-    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
 }
 
 .searchForm
 {
-    width: 100%;
-    margin-left: 10%;
-
+    margin: 1rem 1rem;
 }
 
 .searchForm > input
@@ -78,6 +125,26 @@
     border-radius: 5px;
 }
 
+/*************************************************** 
+                                            Hero
+****************************************************/
+.heroContainer
+{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+.carousel
+{
+    background-color: black;
+    height: 80vh;
+    width: 80%;
+}
+
+/*************************************************** 
+                                            Listing
+****************************************************/
 .sectionHeading
 {
     margin: 2rem 0;
@@ -85,18 +152,40 @@
     text-align: center;
 }
 
-header > .navbar
+.listingContainer 
 {
-    background-color: #F652A0;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    row-gap: 5px;
+    column-gap: 5px;
+    justify-content: center;
+    margin: 0 10%;
 }
 
+/*************************************************** 
+                                        Listing Cards
+****************************************************/
+
+.listingContainer > a > .cards
+{
+    height: 100%;
+} 
+
+.listingContainer .card-title, h5
+{
+    font-size: 1.3em;
+    align-self: center;
+    align-content: center;
+
+}
+
+/*************************************************** 
+                                            Footer
+****************************************************/
 footer 
 {
-    position: relative;
+    position: sticky;
     bottom: 0;
-    margin-top: 6rem;
 }
 
 footer > .navbar
@@ -114,6 +203,10 @@ footer > .navbar > a
     justify-self: center;
 }
 
+/*************************************************** 
+                                         
+****************************************************/
+
 :link , a 
 {
     text-decoration: none;
@@ -122,6 +215,7 @@ footer > .navbar > a
 a:hover
 {
     text-decoration: none;
+    color: azure;
 }
 
 .logInContainer
@@ -179,6 +273,32 @@ a:hover
     transition: background-color .5s;
     text-decoration: none;
 }
+
+.registration
+{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3rem;
+}
+
+.logInContainer
+{
+    margin: 0 10%;
+}
+
+
+/*************************************************** 
+                                             
+****************************************************/
+
+
+
+
+
+
+
 
 
 

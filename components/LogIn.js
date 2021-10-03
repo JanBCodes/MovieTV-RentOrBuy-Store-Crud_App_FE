@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 
 import UserContext from '../context/LogInContext.js';
-
 import { useHistory } from 'react-router-dom'; // Read up More
 
 import Form from 'react-bootstrap/Form'
@@ -38,22 +37,39 @@ const LogIn = () => {
         .then(res => res.json())
         .then(data => {
 
-            console.log(data)
 
-            if(data.admin === true) // Admin Logged In && Direct to Admin Dashboard
+            console.log(data.admin)
+            const isAdmin = data.admin
+
+
+            if(isAdmin) // Admin Logged In && Direct to Admin Dashboard
             {
                 redirect.push("/admin/dashBoard/")
+                alert('Admin Log in Successful')
+
             }
-            else if(data.admin === false) // Customer Logged In && Direct to User Dashboard/Profile
+            else if(!isAdmin) // Customer Logged In && Direct to User Dashboard/Profile
             {
                 redirect.push("/user/dashBoard")
+                alert('User Log in Successful')
+
             }
             else
             {
-                // setMessage({message: "Login Unsuccessful"})
-
+                alert('Log In Unsuccessful')
                 redirect.push("/login")
             }
+
+            setUser({
+
+                firstName: "",
+                lastName: "",
+                email: "",
+                password: ""
+
+            })
+
+            console.log("User Fields Reset")
       
         })
         .catch ((err)=>{
@@ -88,14 +104,9 @@ const LogIn = () => {
                 </Col>
             </Form.Group>
 
-            <Form.Group as={Row} className="mb-3" controlId="formHorizontalCheck">
-                <Col sm={{ span: 10, offset: 2 }}>
-                <Form.Check label="Remember me" />
-                </Col>
-            </Form.Group>
-
             <Form.Group as={Row} className="mb-3">
                 <Col sm={{ span: 10, offset: 2 }}>
+
                 <Button type="submit"> Log In </Button>
                 </Col>
             </Form.Group>
