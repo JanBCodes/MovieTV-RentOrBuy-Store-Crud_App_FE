@@ -2,7 +2,6 @@ import React from 'react';
 import { useContext } from 'react';
 
 import { Link } from "react-router-dom";
-
 import { Navbar, NavDropdown, Nav, Container, Image} from 'react-bootstrap';
 
 import Logo from "../assets/img/logo.jpeg";

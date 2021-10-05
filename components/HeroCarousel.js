@@ -49,7 +49,7 @@ const HeroCarousel = () => {
                 <img
                 className="d-block w-100"
                 src="holder.js/1000x500?text=First slide&bg=373940"
-                alt="Second slide"
+                alt="Third slide"
                 />
 
                 <Carousel.Caption>

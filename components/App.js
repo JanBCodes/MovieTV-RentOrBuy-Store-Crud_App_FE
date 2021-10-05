@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    // Link
+    Route
   } from "react-router-dom";
 
 /* Importing CSS */
@@ -13,7 +12,6 @@ import "../assets/css/App.css";
 import {} from  "../assets/css/PhoneMQ.css";
 import {} from "../assets/css/TabletMQ.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 /* Importing Pages */
 import HomePage from '../pages/HomePage';
@@ -51,8 +49,7 @@ const App = () => {
             })
     const [location, setRoute] = useState({location: ""})
 
-
-    // const [modalStatus, setModalStatus] = useState(false);
+   // const [modalStatus, setModalStatus] = useState(false);
 
 
     useEffect(()=>{

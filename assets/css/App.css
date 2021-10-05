@@ -21,6 +21,7 @@
 {
     background-color: var(--DarkestBGColour1);
     font-family: 'Playfair Display', serif;
+    
 }
 
 /*************************************************** 
@@ -31,7 +32,7 @@
     position: -webkit-sticky;
     top: 0;
     position: sticky;
-    z-index: 1;
+    z-index: 10;
 }
 
 .headerContainer > .navbar
@@ -142,42 +143,7 @@
     width: 80%;
 }
 
-/*************************************************** 
-                                            Listing
-****************************************************/
-.sectionHeading
-{
-    margin: 2rem 0;
-    color: var(--TextColour1);
-    text-align: center;
-}
 
-.listingContainer 
-{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    row-gap: 5px;
-    column-gap: 5px;
-    justify-content: center;
-    margin: 0 10%;
-}
-
-/*************************************************** 
-                                        Listing Cards
-****************************************************/
-
-.listingContainer > a > .cards
-{
-    height: 100%;
-} 
-
-.listingContainer .card-title, h5
-{
-    font-size: 1.3em;
-    align-self: center;
-    align-content: center;
-
-}
 
 /*************************************************** 
                                             Footer
@@ -188,7 +154,7 @@ footer
     bottom: 0;
 }
 
-footer > .navbar
+footer .navbar
 {
     margin-top: 1rem;
     background-color: #F652A0;
@@ -198,18 +164,86 @@ footer > .navbar
     justify-items: center;
 }
 
-footer > .navbar > a
+footer a
 {
     justify-self: center;
 }
+/*************************************************** 
+                                            Listing
+****************************************************/
+.sectionHeading
+{
+    margin: 2rem 0;
+    color: var(--TextColour1);
+    text-align: center;
+}
+
+.listingContainer
+{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+/*************************************************** 
+                                        Listing Cards
+****************************************************/
+
+
+.slideCard
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 5px;
+    row-gap: 5px;
+    width: 80%;
+    margin: 0 10%;
+}
+
+.slideCard .cards
+{
+    display: grid;
+    grid-template-rows: .5fr .5fr 2fr;
+    height: 100%;
+    color: var(--DarkestBGColour1);
+    text-align: center;
+
+} 
+
+.slideCard .cardTitle
+{
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: auto 0;
+}
+
+.slideCard .card-title
+{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+#oneCard
+{
+    background-size: cover;
+    height: 100%;
+    min-width: 100%;
+}
+
+/*************************************************** 
+                                            Carousel
+****************************************************/
+
+
 
 /*************************************************** 
                                          
 ****************************************************/
 
-:link , a 
+:link, a 
 {
     text-decoration: none;
+    color: black;
 }
 
 a:hover
@@ -223,7 +257,6 @@ a:hover
     display: grid;
     grid-template-columns: 1fr;
     color: azure;
-
 }
 
 .logInContainer > h1
@@ -287,6 +320,8 @@ a:hover
 {
     margin: 0 10%;
 }
+
+
 
 
 /*************************************************** 
