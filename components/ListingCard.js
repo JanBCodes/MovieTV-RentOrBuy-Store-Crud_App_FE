@@ -5,6 +5,9 @@ import {Link} from "react-router-dom";
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 
+
+
+
 const ListingCard = (props) => {
 
     let dataArray;
@@ -13,10 +16,6 @@ const ListingCard = (props) => {
     const displayListing = (evt) => {
         console.log(evt.target) //undefined
     }
-
-
-
-
     
 /*     const backEndHost = `http://127.0.0.1:3500`
 
@@ -26,7 +25,7 @@ const ListingCard = (props) => {
 
     return (
 
-    <div class="slideCard" >
+    <div className="slideCard" >
 
             {dataArray.map((data) => ( 
 

@@ -82,7 +82,7 @@ const LogIn = () => {
         <div className="logInContainer">
             <h1> Log in to View </h1>
 
-            <Form method="GET" onSubmit={verifyUserCredentials}>
+            <Form onSubmit={verifyUserCredentials}>
 
             {/* <div>{message}</div> */}
 

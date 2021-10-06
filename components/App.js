@@ -32,6 +32,7 @@ import LocationContext from '../context/LocationContext.js'
 
 /* Import Data Access Object */
 import RESTAPI from '../modules/DAO.js';
+import SearchResultsPage from '../pages/SearchResultsPage';
 
 const App = () => {
 
@@ -143,6 +144,10 @@ const App = () => {
 
                 <Route path = "/register">
                     <SignUpPage/>
+                </Route>
+
+                <Route path = "/searchResults">
+                    <SearchResultsPage/>
                 </Route>
                 
 
