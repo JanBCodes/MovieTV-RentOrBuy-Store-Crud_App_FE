@@ -41,11 +41,10 @@ const ListingCard = (props) => {
                                 {data.title}
                             </Card.Title>
                         </Card.Body>
-                        
-                    
+                                            
                         <Card.Body >
                             <Card.Text>
-                                {data.synopsis.substring(0,100)}...
+                                {data.synopsis.substring(0,200)}...
                             </Card.Text>
                         </Card.Body>
 

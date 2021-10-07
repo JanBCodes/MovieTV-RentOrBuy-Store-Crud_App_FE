@@ -1,18 +1,24 @@
-import React from 'react';
-
-import { useState } from 'react';
+import React,  { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom'; // Read up More
+
+/* Importing Context */
+import searchContext from '../context/searchContext';
+import BackEndHostContext from '../context/BackendHostContext';
+
+/* Import Data Access Object */
+import RESTAPI from '../modules/DAO.js';
 
 
 const SearchBar = () => {
 
     let input;
     const [searchInput, setSearchInput] = useState();
+    const {searchResults, setSearchResults} = useContext(searchContext)
+    const {backEndHost} = useContext(BackEndHostContext)
+
     const redirect = useHistory();
 
     const whichDBtoSearch = (e) => {
-
-        console.log(e.target.value)
 
         if(e.target.value === "movies")
         {
@@ -29,18 +35,12 @@ const SearchBar = () => {
 
         evt.preventDefault(); //Prevents Default Behaviour of the evt (in this case submit)
 
-        fetch(`http://localhost:3500/${input}/search`, {
-            
-            method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            headers: {
-                    'Content-Type': 'application/json'
-                },
-            body: JSON.stringify({search: searchInput})
-        })
-        .then(res => res.json())
+        const fetchData = new RESTAPI();
+        fetchData.getAPIData(`${backEndHost.backEndHost}/${input}/search`, "POST", {search: searchInput})// getAPIData(endPoint, Type, objToStringify)
         .then(data => {
 
-            console.log(data)
+            setSearchResults(data)
+            console.log(searchResults)
             redirect.push("/searchResults")
 
         })
@@ -56,7 +56,7 @@ const SearchBar = () => {
 
         <div className="searchBarContainer">
             <form className="searchForm" method="POST"  onSubmit={searchDB}>
-                <input type="text" placeholder="Search All Movies and TV Shows." name="search" 
+                <input type="text" placeholder="Search All Movies or All TV Shows." name="search" 
                 onChange={e => setSearchInput(e.target.value) }/>
 
                 <button className="searchMovies" value="movies" onClick={whichDBtoSearch} action="/movies/search"> M </button>

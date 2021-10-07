@@ -20,33 +20,33 @@ const Header = () => {
     }
 
     return (
+
         <header className="headerContainer">
-            <Navbar className="navbar" expand="xl">
+            <Navbar className="navbar" expand="sm">
                 <Container>
 
                     <Link to="/">
                         <Image className="logo" src={Logo} roundedCircle />
                         <div id="companyName"> Bored Buster Entertainment </div>
                     </Link>
+                    <Navbar.Collapse id="basic-navbar-nav" className="navbar-collapse">
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
 
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto" id="me-auto">
-                            <Link to="/movies" name="movies" onClick={setRouteLocation}>Movies</Link>
-                            <Link to="/tvShows" name="tvShows" onClick={setRouteLocation}>Tv Shows</Link>
-                        </Nav>
+                            <Nav className="me-auto" id="me-auto">
+                                <Link to="/movies" name="movies" onClick={setRouteLocation}>Movies</Link>
+                                <Link to="/tvShows" name="tvShows" onClick={setRouteLocation}>Tv Shows</Link>
+                            </Nav>
 
-                        <NavDropdown title="My Account" id="basic-nav-dropdown">
-                            <Link to="/register">Register </Link> 
-                            <NavDropdown.Divider />
-                            <Link to="/login">Log In </Link> 
-                        </NavDropdown>
+                            <NavDropdown title="My Account" id="basic-nav-dropdown">
+                                <Link to="/register"> Register </Link> 
+                                <NavDropdown.Divider />
+                                <Link to="/login"> Log In </Link> 
+                            </NavDropdown>
 
-                    </Navbar.Collapse>
+                        </Navbar.Collapse>
                 </Container>
 
-                    {/* <SearchBar/> */}
             </Navbar>
 
             <SearchBar/>           

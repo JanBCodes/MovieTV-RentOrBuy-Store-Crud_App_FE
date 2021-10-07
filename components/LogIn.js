@@ -1,57 +1,50 @@
 import React, { useContext } from 'react';
-
-import UserContext from '../context/LogInContext.js';
 import { useHistory } from 'react-router-dom'; // Read up More
 
+/* Importing Context */
+import UserContext from '../context/LogInContext.js';
+import BackEndHostContext from '../context/BackendHostContext';
+
+
+/* Importing BS Components */
 import Form from 'react-bootstrap/Form'
 import { Col, Row, Button} from 'react-bootstrap'
+
+/* Import Data Access Object */
+import RESTAPI from '../modules/DAO.js';
+
 
 
 const LogIn = () => {
 
-    // const [message, setMessage] = useState({message: null})
-
     const {user, setUser} = useContext(UserContext);
+    const backEndHost = useContext(BackEndHostContext)
+
     const redirect = useHistory();
 
     const verifyUserCredentials = (evt) => {
 
         evt.preventDefault(); //Prevents Default Behaviour of the evt (in this case submit)
 
-        console.log(user)
+        const fetchData = new RESTAPI();
+        fetchData.getAPIData(`${backEndHost.backEndHost}/user/login`, "POST", {
 
-        fetch("http://localhost:3500/user/login", {
-        
-            method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            headers: {
-                    'Content-Type': 'application/json'
-                },
-            body: JSON.stringify({
-
-                email: user.email,
-                password: user.password
-       
-            })
-        })
-
-        .then(res => res.json())
+            email: user.email,
+            password: user.password
+   
+        })// getAPIData(endPoint, Type, toStringify)
         .then(data => {
 
-
-            console.log(data.admin)
             const isAdmin = data.admin
 
 
             if(isAdmin) // Admin Logged In && Direct to Admin Dashboard
             {
                 redirect.push("/admin/dashBoard/")
-                alert('Admin Log in Successful')
-
             }
             else if(!isAdmin) // Customer Logged In && Direct to User Dashboard/Profile
             {
                 redirect.push("/user/dashBoard")
-                alert('User Log in Successful')
 
             }
             else
@@ -83,8 +76,6 @@ const LogIn = () => {
             <h1> Log in to View </h1>
 
             <Form onSubmit={verifyUserCredentials}>
-
-            {/* <div>{message}</div> */}
 
             <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
                 <Form.Label column sm={2}>

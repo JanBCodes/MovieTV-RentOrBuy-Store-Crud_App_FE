@@ -188,12 +188,10 @@ footer a
 /*************************************************** 
                                         Listing Cards
 ****************************************************/
-
-
 .slideCard
 {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     column-gap: 5px;
     row-gap: 5px;
     width: 80%;
@@ -236,6 +234,27 @@ footer a
 
 
 
+/*************************************************** 
+                                         Search Bar
+****************************************************/
+.searchResultsTitle
+{
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 80%;
+    margin: 0% 10% 5rem 10%;
+    color: var(--TextColour1);
+}
+
+.searchResults
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5px;
+    row-gap: 5px;
+    width: 80%;
+    margin: 0 10%;
+}
 /*************************************************** 
                                          
 ****************************************************/

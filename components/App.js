@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-
 import {
     BrowserRouter as Router,
     Switch,
@@ -20,6 +19,7 @@ import AdminPage from '../pages/AdminDashPage';
 import LogInPage from '../pages/Log_InPage';
 import SignUpPage from '../pages/Sign_UpPage';
 import AdminCreatePage from '../pages/Admin_CreateItem';
+import SearchResultsPage from '../pages/SearchResultsPage';
 
 /* Importing Context */
 import AllMoviesContext from '../context/AllMoviesContext.js';
@@ -28,11 +28,12 @@ import TVshowsContext from '../context/FTTVShowsContext.js';
 import AllNewReleases from '../context/AllNewReleasesContext.js';
 import AllTVShowsContext from '../context/AllTVShowsContext.js';
 import UserContext from '../context/LogInContext.js';
-import LocationContext from '../context/LocationContext.js'
+import LocationContext from '../context/LocationContext.js';
+import SearchContext from '../context/searchContext.js';
+import BackEndHostContext from '../context/BackendHostContext.js';
 
 /* Import Data Access Object */
 import RESTAPI from '../modules/DAO.js';
-import SearchResultsPage from '../pages/SearchResultsPage';
 
 const App = () => {
 
@@ -48,48 +49,46 @@ const App = () => {
                 email: "",
                 password: ""
             })
-    const [location, setRoute] = useState({location: ""})
-
-   // const [modalStatus, setModalStatus] = useState(false);
-
+    const [location, setRoute] = useState({location: ""});
+    const [searchResults, setSearchResults] = useState([]);
+    const [backEndHost] = useState({backEndHost: "http://localhost:3500"});
 
     useEffect(()=>{
 
-        const backEndHost = `http://localhost:3500`;
 
         const fetchData = new RESTAPI();
 
-        fetchData.getAPIData(`${backEndHost}/movies/`)
+        fetchData.getAPIData(`${backEndHost.backEndHost}/movies/`, "GET")
         .then((data) => {
 
             setAllMovies(data.data)
         })
 
-        fetchData.getAPIData(`${backEndHost}/tvShows/`)
+        fetchData.getAPIData(`${backEndHost.backEndHost}/tvShows/`, "GET")
         .then((data) => {
 
             setAllTVShows(data.data)
         })
 
-        fetchData.getAPIData(`${backEndHost}/movies?featMovie=true`)
+        fetchData.getAPIData(`${backEndHost.backEndHost}/movies?featMovie=true`, "GET")
         .then((data) => {
 
             setAllFTMovies(data.data)
         })
 
-        fetchData.getAPIData(`${backEndHost}/tvShows?featTV=true`)
+        fetchData.getAPIData(`${backEndHost.backEndHost}/tvShows?featTV=true`, "GET")
         .then((data) => {
 
             setAllFTTVshows(data.data)
         })
 
-        fetchData.getAPIData(`${backEndHost}/tvShows?featTV=true`)
+        fetchData.getAPIData(`${backEndHost.backEndHost}/tvShows?featTV=true`, "GET")
         .then((data) => {
 
             setAllFTTVshows(data.data)
         })
         
-        fetchData.getAPIData(`${backEndHost}/movies?isNewMovie=y`)
+        fetchData.getAPIData(`${backEndHost.backEndHost}/movies?isNewMovie=y`, "GET")
         .then((data) => {
 
             setAllNewReleases(data.data)
@@ -103,9 +102,7 @@ const App = () => {
       },[]);
 
     return (
-
-    // <div className="container">
-            
+           
     <Router>
         <Switch>
 
@@ -116,8 +113,9 @@ const App = () => {
             <AllTVShowsContext.Provider value = {{allTVShows, setAllTVShows}}>
             <UserContext.Provider value = {{user, setUser}}>
             <LocationContext.Provider value = {{location, setRoute}}>
+            <SearchContext.Provider value = {{searchResults, setSearchResults}}> 
+            <BackEndHostContext.Provider value = {{backEndHost}}>
 
-            
                 <Route exact path = "/">
                     <HomePage/>
                 </Route>
@@ -150,7 +148,8 @@ const App = () => {
                     <SearchResultsPage/>
                 </Route>
                 
-
+            </BackEndHostContext.Provider>
+            </SearchContext.Provider>
             </LocationContext.Provider>
             </UserContext.Provider>
             </AllTVShowsContext.Provider>
@@ -162,7 +161,7 @@ const App = () => {
         </Switch>
     </Router>
 
-    // </div>
+
   )
 }
 

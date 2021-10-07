@@ -1,9 +1,68 @@
-@media (min-width: 675.99px) and (max-width: 1000.98px) {
+@media (min-width: 931.99px) and (max-width: 1129.98px) {
 
-    .listingContainer 
+    .slideCard
     {
+
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+}  
+
+
+@media (min-width: 675.99px) and (max-width: 931.98px) {
+
+    .slideCard
+    {
+
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
-
 }  
+
+
+@media (min-width: 300.00px) and (max-width: 675.98px) {
+  
+    
+    /* #dashBoardCards
+    {
+        grid-template-columns: 1fr;
+        font-size: .8rem;
+        justify-self: center;
+        margin: auto;
+    }
+
+    #dashBoardCards > a
+    {
+        margin: .2rem;
+    } */
+
+    .slideCard
+    {
+
+        grid-template-columns: 1fr 1fr;
+    }
+
+};
+
+@media (max-width: 382.98px) {
+  
+    
+    /* #dashBoardCards
+    {
+        grid-template-columns: 1fr;
+        font-size: .8rem;
+        justify-self: center;
+        margin: auto;
+    }
+
+    #dashBoardCards > a
+    {
+        margin: .2rem;
+    } */
+
+    .slideCard
+    {
+        grid-template-columns: 1fr;
+    }
+
+};
