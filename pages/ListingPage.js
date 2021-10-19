@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
-import { useHistory } from 'react-router-dom'; // Read up More
+// import { useHistory } from 'react-router-dom'; // Read up More
 
 
 /* Importing Components */
@@ -22,7 +22,7 @@ const ListingPage = () => {
     const {allTVShows} = useContext(AllTVShowsContext);
     const {location} = useContext(LocationContext);
 
-    const redirect = useHistory();
+    // const redirect = useHistory();
 
 
     if(location.location === "movies")
@@ -37,13 +37,13 @@ const ListingPage = () => {
         title = 'TV Shows'
 
     }
-    else // Returning as Undefine *fix* might have to use state
-    {
-        dataArray = null
-        title = "Try Again"
-        redirect.push("/")
+    // else // Returning as Undefine *fix* might have to use state
+    // {
+    //     title = "Try Again"
+    //     // setRoute({location: "movies"})
+    //     redirect.push("/")
 
-    }
+    // }
 
     return (
 

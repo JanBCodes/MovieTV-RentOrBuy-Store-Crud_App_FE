@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom'; // Read up More
 
 /* Importing Context */
 import searchContext from '../context/searchContext';
-import BackEndHostContext from '../context/BackendHostContext';
 
 /* Import Data Access Object */
 import RESTAPI from '../modules/DAO.js';
@@ -14,7 +13,6 @@ const SearchBar = () => {
     let input;
     const [searchInput, setSearchInput] = useState();
     const {searchResults, setSearchResults} = useContext(searchContext)
-    const {backEndHost} = useContext(BackEndHostContext)
 
     const redirect = useHistory();
 
@@ -36,7 +34,7 @@ const SearchBar = () => {
         evt.preventDefault(); //Prevents Default Behaviour of the evt (in this case submit)
 
         const fetchData = new RESTAPI();
-        fetchData.getAPIData(`${backEndHost.backEndHost}/${input}/search`, "POST", {search: searchInput})// getAPIData(endPoint, Type, objToStringify)
+        fetchData.getAPIData(`http://localhost:3500/${input}/search`, "POST", {search: searchInput})// getAPIData(endPoint, Type, objToStringify)
         .then(data => {
 
             setSearchResults(data)

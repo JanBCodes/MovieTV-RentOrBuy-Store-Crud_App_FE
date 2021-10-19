@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom'; // Read up More
 
 /* Importing Context */
 import UserContext from '../context/LogInContext.js';
-import BackEndHostContext from '../context/BackendHostContext';
 
 
 /* Importing BS Components */
@@ -18,7 +17,6 @@ import RESTAPI from '../modules/DAO.js';
 const LogIn = () => {
 
     const {user, setUser} = useContext(UserContext);
-    const backEndHost = useContext(BackEndHostContext)
 
     const redirect = useHistory();
 
@@ -27,7 +25,7 @@ const LogIn = () => {
         evt.preventDefault(); //Prevents Default Behaviour of the evt (in this case submit)
 
         const fetchData = new RESTAPI();
-        fetchData.getAPIData(`${backEndHost.backEndHost}/user/login`, "POST", {
+        fetchData.getAPIData(`http://localhost:3500/user/login`, "POST", {
 
             email: user.email,
             password: user.password

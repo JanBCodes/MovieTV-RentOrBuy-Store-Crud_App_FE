@@ -22,10 +22,6 @@ const AdminCreatePage = () => {
     const {user, setUser} = useContext(CreateContext);
     // const redirect = useHistory()
 
-
-
-
-
     return (       
         <div className="adminCreatePage">
 
@@ -34,7 +30,7 @@ const AdminCreatePage = () => {
             <main>
 
                 <h3 className="sectionHeading"> 
-                    Welcome Admin{/* Admin Name */}
+                    Welcome Admin  {/* Admin Name */}
                     Create A New Item
                 </h3>
 
@@ -62,11 +58,56 @@ const AdminCreatePage = () => {
                 </Col>
                 </Form.Group>
 
-                <Form.Group as={Row} className="mb-3" controlId="formHorizontalCheck">
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+                <Form.Label column sm={2}>
+                    Password
+                </Form.Label>
+                <Col sm={10}>
+                <Form.Control value={user.password}  onChange={e => setUser({...user, password: e.target.value})} type="text" placeholder="Password" />
+                </Col>
+                </Form.Group>
+
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+                <Form.Label column sm={2}>
+                    Password
+                </Form.Label>
+                <Col sm={10}>
+                <Form.Control value={user.password}  onChange={e => setUser({...user, password: e.target.value})} type="text" placeholder="Password" />
+                </Col>
+                </Form.Group>
+
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+                <Form.Label column sm={2}>
+                    Password
+                </Form.Label>
+                <Col sm={10}>
+                <Form.Control value={user.password}  onChange={e => setUser({...user, password: e.target.value})} type="text" placeholder="Password" />
+                </Col>
+                </Form.Group>
+
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+                <Form.Label column sm={2}>
+                    Password
+                </Form.Label>
+                <Col sm={10}>
+                <Form.Control value={user.password}  onChange={e => setUser({...user, password: e.target.value})} type="text" placeholder="Password" />
+                </Col>
+                </Form.Group>
+
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+                <Form.Label column sm={2}>
+                    Password
+                </Form.Label>
+                <Col sm={10}>
+                <Form.Control value={user.password}  onChange={e => setUser({...user, password: e.target.value})} type="text" placeholder="Password" />
+                </Col>
+                </Form.Group>
+
+                {/* <Form.Group as={Row} className="mb-3" controlId="formHorizontalCheck">
                 <Col sm={{ span: 10, offset: 2 }}>
                     <Form.Check label="Remember me" />
                 </Col>
-                </Form.Group>
+                </Form.Group> */}
 
                 <Form.Group as={Row} className="mb-3">
                 <Col sm={{ span: 10, offset: 2 }}>

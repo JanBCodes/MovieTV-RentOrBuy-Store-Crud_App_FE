@@ -1,27 +1,45 @@
 import React from 'react';
+import {useContext} from 'react';
 import {Link} from "react-router-dom";
 
 /* Importing BS Components */
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
+import { Image } from 'react-bootstrap';
 
-
+import SelectedContext from '../context/SelectedContext.js';
 
 
 const ListingCard = (props) => {
 
     let dataArray;
+    // let imageLocation;
+
     dataArray = props.info;
 
-    const displayListing = (evt) => {
-        console.log(evt.target) //undefined
-    }
+    const {setSelected} = useContext(SelectedContext);
+
+
+    // useEffect(() => {
+    //     const backEndHost = `http://127.0.0.1:3500`
+
+    //     fetch(`${backEndHost}/assets`)
+    //     .then(res => res.json())
+    //     .then(data => {
     
-/*     const backEndHost = `http://127.0.0.1:3500`
+    //         console.log(data)
+    
+    //         // data.results.forEach(element => {
+    
+    //         // imageLocation = `${backEndHost}/assets/img/movieBannerBiG/`
+    
+    
+    //         // })    
+    //     })
 
-    fetch(`${backEndHost}/items`)
+    // }, [])
 
-            const imageLocation = `${backEndHost}/assets/img/itemUploads` */
+
 
     return (
 
@@ -29,12 +47,14 @@ const ListingCard = (props) => {
 
             {dataArray.map((data) => ( 
 
-                <Link to={`/${data.type}/${data._id}`} key={data._id} >
+                <Link to={`/${data.type}/${data._id}`} key={data._id} id={data._id} 
+                                                                        onClick={e => setSelected(data)}>
 
-                    <Card className="cards" id={data._id} key={data._id} onClick={displayListing}>
+                    <Card className="cards" id={data._id} >
 
-                        <Card.Body id="oneCard" style={{backgroundImage: `url({data.largePosterImg})`}} >
-                        </Card.Body>
+                    {/* style={{ backgroundImage: `url("http://127.0.0.1:3500/assets/img/movieBannerBiG/${data.largePosterImg}")` }} */}
+
+                        <Image src={`http://127.0.0.1:3500/assets/img/movieBannerBiG/${data.largePosterImg}`} thumbnail />
                         
                         <Card.Body className="cardTitle">
                             <Card.Title> 

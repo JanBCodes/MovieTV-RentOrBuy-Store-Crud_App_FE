@@ -20,6 +20,7 @@ import LogInPage from '../pages/Log_InPage';
 import SignUpPage from '../pages/Sign_UpPage';
 import AdminCreatePage from '../pages/Admin_CreateItem';
 import SearchResultsPage from '../pages/SearchResultsPage';
+import DetailsPage from '../pages/DetailsPage';
 
 /* Importing Context */
 import AllMoviesContext from '../context/AllMoviesContext.js';
@@ -30,7 +31,7 @@ import AllTVShowsContext from '../context/AllTVShowsContext.js';
 import UserContext from '../context/LogInContext.js';
 import LocationContext from '../context/LocationContext.js';
 import SearchContext from '../context/searchContext.js';
-import BackEndHostContext from '../context/BackendHostContext.js';
+import SelectedContext from '../context/SelectedContext.js';
 
 /* Import Data Access Object */
 import RESTAPI from '../modules/DAO.js';
@@ -51,44 +52,44 @@ const App = () => {
             })
     const [location, setRoute] = useState({location: ""});
     const [searchResults, setSearchResults] = useState([]);
-    const [backEndHost] = useState({backEndHost: "http://localhost:3500"});
+    const [selected, setSelected] = useState([])
+
 
     useEffect(()=>{
 
-
         const fetchData = new RESTAPI();
 
-        fetchData.getAPIData(`${backEndHost.backEndHost}/movies/`, "GET")
+        fetchData.getAPIData(`http://localhost:3500/movies/`, "GET")
         .then((data) => {
 
             setAllMovies(data.data)
         })
 
-        fetchData.getAPIData(`${backEndHost.backEndHost}/tvShows/`, "GET")
+        fetchData.getAPIData(`http://localhost:3500/tvShows/`, "GET")
         .then((data) => {
 
             setAllTVShows(data.data)
         })
 
-        fetchData.getAPIData(`${backEndHost.backEndHost}/movies?featMovie=true`, "GET")
+        fetchData.getAPIData(`http://localhost:3500/movies?featMovie=true`, "GET")
         .then((data) => {
 
             setAllFTMovies(data.data)
         })
 
-        fetchData.getAPIData(`${backEndHost.backEndHost}/tvShows?featTV=true`, "GET")
+        fetchData.getAPIData(`http://localhost:3500/tvShows?featTV=true`, "GET")
         .then((data) => {
 
             setAllFTTVshows(data.data)
         })
 
-        fetchData.getAPIData(`${backEndHost.backEndHost}/tvShows?featTV=true`, "GET")
+        fetchData.getAPIData(`http://localhost:3500/tvShows?featTV=true`, "GET")
         .then((data) => {
 
             setAllFTTVshows(data.data)
         })
         
-        fetchData.getAPIData(`${backEndHost.backEndHost}/movies?isNewMovie=y`, "GET")
+        fetchData.getAPIData(`http://localhost:3500/movies?isNewMovie=y`, "GET")
         .then((data) => {
 
             setAllNewReleases(data.data)
@@ -114,41 +115,50 @@ const App = () => {
             <UserContext.Provider value = {{user, setUser}}>
             <LocationContext.Provider value = {{location, setRoute}}>
             <SearchContext.Provider value = {{searchResults, setSearchResults}}> 
-            <BackEndHostContext.Provider value = {{backEndHost}}>
+            <SelectedContext.Provider value = {{selected, setSelected}}>
 
                 <Route exact path = "/">
                     <HomePage/>
                 </Route>
 
-                <Route path = "/movies">
+                <Route exact path = "/movies">
                     <ListingPage/>
                 </Route>
 
-                <Route path = "/tvShows">
+                <Route exact path = "/movies/:id">
+                    <DetailsPage/>
+                </Route>
+
+                <Route exact path = "/tvShows">
                     <ListingPage/>
                 </Route>
+
+                <Route exact path = "/tvShows/:id">
+                    <DetailsPage/>
+                </Route>
                 
-                <Route path = "/admin/dashBoard">
+                <Route exact path = "/admin/dashBoard">
                     <AdminPage/>
                 </Route>
 
-                <Route path = "/admin/create">
+                <Route exact path = "/admin/create">
                     <AdminCreatePage/>
                 </Route>
 
-                <Route path = "/login">
+                <Route exact path = "/login">
                     <LogInPage/>
                 </Route>
 
-                <Route path = "/register">
+                <Route exact path = "/register">
                     <SignUpPage/>
                 </Route>
 
-                <Route path = "/searchResults">
+                <Route exact path = "/searchResults">
                     <SearchResultsPage/>
                 </Route>
                 
-            </BackEndHostContext.Provider>
+
+            </SelectedContext.Provider>
             </SearchContext.Provider>
             </LocationContext.Provider>
             </UserContext.Provider>

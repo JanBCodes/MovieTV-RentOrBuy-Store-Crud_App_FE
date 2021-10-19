@@ -15,6 +15,7 @@ const Header = () => {
 
     const setRouteLocation = (evt) => {
 
+        console.log(evt.target.name)
         setRoute({location: evt.target.name})
 
     }
