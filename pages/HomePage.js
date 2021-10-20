@@ -26,22 +26,22 @@ const HomePage = () => {
             
             <Header/>
             <Hero/>
+                <main>
+                    <h3 className="sectionHeading"> 
+                        Feat. Movies
+                    </h3>
+                    <ListingContainer info={allFTMovies}/>
 
-            <h3 className="sectionHeading"> 
-                Feat. Movies
-            </h3>
-            <ListingContainer info={allFTMovies}/>
-
-            <h3 className="sectionHeading"> 
-                Feat. TV Shows 
-            </h3>
-            <ListingContainer info={allFTTVshows}/>
-            
-            <h3 className="sectionHeading"> 
-                New Releases
-            </h3>
-            <ListingContainer info={allNewReleases}/>
-
+                    <h3 className="sectionHeading"> 
+                        Feat. TV Shows 
+                    </h3>
+                    <ListingContainer info={allFTTVshows}/>
+                    
+                    <h3 className="sectionHeading"> 
+                        New Releases
+                    </h3>
+                    <ListingContainer info={allNewReleases}/>
+                </main>
             <Footer/>         
 
         </div>

@@ -4,6 +4,7 @@
     --LighterBGColour2: #BCECE0;
     --TextColour1: #F652A0;
     --TextColour2: #36EEE0;
+    
 }
 
 *
@@ -11,7 +12,8 @@
     margin: 0;
     padding:0;
     box-sizing: border-box;
-    font-size: 18px;
+    font-size: 18px;    
+
 }
 
 /*************************************************** 
@@ -134,8 +136,6 @@
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
-    height: 80vh;
-
 }
 
 .carousel
@@ -152,8 +152,13 @@
 }
 
 
-
-
+/*************************************************** 
+                                            Main
+****************************************************/
+main
+{
+    min-height: 75vh;
+}
 
 /*************************************************** 
                                             Footer
@@ -166,11 +171,11 @@ footer
 
 footer .navbar
 {
-    margin-top: 1rem;
-    background-color: #F652A0;
-    color: var(--DarkestBGColour1);
     display: grid;
     grid-template-columns: 2fr .5fr .5fr;
+    background-color: #F652A0;
+    margin-top: 1rem;
+    color: var(--DarkestBGColour1);
     justify-items: center;
 }
 
@@ -267,7 +272,7 @@ footer a
 }
 
 /*************************************************** 
-                                        Details Page
+                             Admin / Details Pages
 ****************************************************/
 .detailsPageContainer
 {
@@ -278,6 +283,14 @@ footer a
     width: 80%;
     margin: 0 10%;
 
+}
+
+.adminCreatePage main
+{
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 80%;
+    margin: 0 10%;
 }
 
 /* .slideCard .cardTitle
@@ -391,7 +404,12 @@ a:hover
 /*************************************************** 
                                              
 ****************************************************/
-
+.checkboxContainer
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 0 3rem;
+}
 
 
 

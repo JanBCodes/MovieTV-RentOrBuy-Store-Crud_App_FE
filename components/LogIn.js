@@ -16,7 +16,7 @@ import RESTAPI from '../modules/DAO.js';
 
 const LogIn = () => {
 
-    const {user, setUser} = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext); // *********** Change to State ** FIx
 
     const redirect = useHistory();
 
