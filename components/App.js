@@ -83,11 +83,6 @@ const App = () => {
             setAllFTTVshows(data.data)
         })
 
-        fetchData.getAPIData(`http://localhost:3500/tvShows?featTV=true`, "GET")
-        .then((data) => {
-
-            setAllFTTVshows(data.data)
-        })
         
         fetchData.getAPIData(`http://localhost:3500/movies?isNewMovie=y`, "GET")
         .then((data) => {

@@ -33,7 +33,7 @@ const DetailsPage = () => {
             
                     <div className="detailsPageContainer">
 
-                        <Image src={`http://127.0.0.1:3500/assets/img/movieBannerBiG/${selected.largePosterImg}`}  thumbnail />
+                        <Image src={`${selected.largePosterImg}`}  thumbnail />
 
                         <div>
 
@@ -55,8 +55,10 @@ const DetailsPage = () => {
                                     <iframe width="660" height="315" src={`${selected.trailer}`} title="YouTube video player" frameborder="0" 
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
+                            </Card.Body>
+                            
+                            <Card.Body >
 
-                                
                             <ListGroupItem>Rent: 
                             $ {selected.priceToRent}
                             </ListGroupItem>

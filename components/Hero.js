@@ -1,17 +1,27 @@
-import React from 'react';
-import { useContext } from 'react';
+import React, { useEffect, useState } from 'react';
+
 
 /* Importing BS Components */
 import Carousel from 'react-bootstrap/Carousel';
 
-
-/* Importing Context */
-import NewReleases from '../context/AllNewReleasesContext.js'
+/* Import Data Access Object */
+import RESTAPI from '../modules/DAO.js';
 
 const Hero = () => {
 
-    const {allNewReleases} = useContext(NewReleases);
+    const [allNewReleases, setAllNewReleases] = useState([]); 
 
+    useEffect(()=>{
+
+        const fetchData = new RESTAPI();
+
+        fetchData.getAPIData(`http://localhost:3500/movies?isNewMovie=y`, "GET")
+        .then((data) => {
+
+            setAllNewReleases(data.data)
+        })
+
+    },[]);
 
     return (
         <div className="heroContainer">
@@ -22,7 +32,7 @@ const Hero = () => {
 
                         <img
                             // className="d-block w-100"
-                            src={`http://127.0.0.1:3500/assets/img/movieBannerBiG/${data.largePosterImg}`} 
+                            src={`${data.largePosterImg}`} 
                             alt={`${data.title}`}
                         />
                         <Carousel.Caption>
