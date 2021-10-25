@@ -1,5 +1,5 @@
 import React from 'react';
-// import { useHistory } from 'react-router-dom'; // Read up More
+import { useHistory } from 'react-router-dom'; // Read up More
 import { useState } from 'react';
 
 // import { Link } from "react-router-dom";
@@ -16,6 +16,7 @@ import { Col, Row, Button} from 'react-bootstrap'
 
 const AdminCreatePage = () => {
 
+	const redirect = useHistory();
 
 	const genre = [
 		"Action",
@@ -78,7 +79,6 @@ const AdminCreatePage = () => {
 
 		const formData = new FormData();
 
-
 		formData.append('title', form.title);
 		formData.append('type', form.type);
 		formData.append('synopsis', form.synopsis);
@@ -93,6 +93,7 @@ const AdminCreatePage = () => {
 		formData.append('isNewRelease', form.isNewRelease);
 		formData.append('numOfSeasons', form.numOfSeasons);
 		formData.append('runtime', form.runtime);
+
 		if(!form.smallPosterImg.files[0])
 		{
 			formData.append('smallPosterImg', form.smallPosterImg.files[0]);
@@ -114,13 +115,16 @@ const AdminCreatePage = () => {
 			.then(json => {
  
 			 console.log(json)
+			 alert("New Movie Added")
+			 redirect.push("/admin/View")
+
  
-		 })
-		 .catch(err=>{
- 
-			 console.log(err)
- 
-		 })
+			})
+			.catch(err=>{
+
+				console.log(err)
+
+			})
 
 		}
 
@@ -135,15 +139,15 @@ const AdminCreatePage = () => {
 			.then(json => {
  
 			 console.log(json)
- 
-		 })
-		 .catch(err=>{
- 
-			 console.log(err)
- 
-		 })
+			 redirect.push("/admin/View")
+			})
+			.catch(err=>{
+	
+				console.log(err)
+	
+			})
 
-		}
+		}	
 
 
 

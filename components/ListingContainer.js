@@ -1,6 +1,6 @@
 import React from 'react'
 
- import {useContext} from 'react';
+//  import {useContext} from 'react';
 
 
 // import ListingCard from '../components/ListingCard.js';
@@ -12,14 +12,14 @@ import { Image } from 'react-bootstrap';
 
 import {Link} from "react-router-dom";
 
-import SelectedContext from '../context/SelectedContext.js';
+// import SelectedContext from '../context/SelectedContext.js';
 
 
 const ListingContainer = (props) => {
 
     let dataArray = props.info
 
-     const {setSelected} = useContext(SelectedContext);
+    //  const {setSelected} = useContext(SelectedContext);
 
 
 
@@ -33,9 +33,7 @@ const ListingContainer = (props) => {
 
             {dataArray.map((data) => ( 
 
-                <Link to={`/${data.type}/${data._id}`} key={data._id} id={data._id} 
-                                                                        onClick={e => setSelected(data)}
-                                                                        >
+                <Link to={`/${data.type}/${data._id}`} key={data._id} id={data._id}>
 
                     <Card className="cards" id={data._id} >
 

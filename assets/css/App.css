@@ -390,13 +390,19 @@ a:hover
     grid-template-columns: 1fr;
     justify-content: center;
     align-items: center;
-    margin: 0 3rem;
+    margin: 0 10%;
+}
+
+.registerButton
+{
+    text-align: center;
 }
 
 .logInContainer
 {
     margin: 0 10%;
 }
+
 
 
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import { useContext } from 'react';
 // import { useHistory } from 'react-router-dom'; // Read up More
+import {useLocation} from "react-router-dom";
+
 
 
 /* Importing Components */
@@ -11,7 +13,6 @@ import Footer from "../components/Footer.js"
 /* Importing Context */
 import AllMoviesContext from '../context/AllMoviesContext.js';
 import AllTVShowsContext from '../context/AllTVShowsContext.js';
-import LocationContext from '../context/LocationContext.js';
 
 const ListingPage = () => {
 
@@ -20,30 +21,21 @@ const ListingPage = () => {
 
     const {allMovies} = useContext(AllMoviesContext);
     const {allTVShows} = useContext(AllTVShowsContext);
-    const {location} = useContext(LocationContext);
 
-    // const redirect = useHistory();
+      const rootLocation = useLocation();
+//      console.log(rootLocation.pathname);
 
-
-    if(location.location === "movies")
+    if(rootLocation.pathname === "/movies")
     {
         dataArray = allMovies;
         title = 'Movies'
     }
 
-    else if(location.location === "tvShows") // Returning as Undefine *fix* might have to use state
+    if(rootLocation.pathname === "/tvShows")
     {
         dataArray = allTVShows;
         title = 'TV Shows'
-
     }
-    // else // Returning as Undefine *fix* might have to use state
-    // {
-    //     title = "Try Again"
-    //     // setRoute({location: "movies"})
-    //     redirect.push("/")
-
-    // }
 
     return (
 

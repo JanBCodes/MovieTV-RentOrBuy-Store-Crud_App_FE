@@ -29,9 +29,8 @@ import TVshowsContext from '../context/FTTVShowsContext.js';
 import AllNewReleases from '../context/AllNewReleasesContext.js';
 import AllTVShowsContext from '../context/AllTVShowsContext.js';
 import UserContext from '../context/LogInContext.js';
-import LocationContext from '../context/LocationContext.js';
 import SearchContext from '../context/searchContext.js';
-import SelectedContext from '../context/SelectedContext.js';
+// import SelectedContext from '../context/SelectedContext.js';
 
 /* Import Data Access Object */
 import RESTAPI from '../modules/DAO.js';
@@ -50,9 +49,8 @@ const App = () => {
                 email: "",
                 password: ""
             })
-    const [location, setRoute] = useState({location: ""});
     const [searchResults, setSearchResults] = useState([]);
-    const [selected, setSelected] = useState([])
+    // const [selected, setSelected] = useState([])
 
 
     useEffect(()=>{
@@ -108,9 +106,8 @@ const App = () => {
             <AllNewReleases.Provider value = {{allNewReleases, setAllNewReleases}}>
             <AllTVShowsContext.Provider value = {{allTVShows, setAllTVShows}}>
             <UserContext.Provider value = {{user, setUser}}>
-            <LocationContext.Provider value = {{location, setRoute}}>
             <SearchContext.Provider value = {{searchResults, setSearchResults}}> 
-            <SelectedContext.Provider value = {{selected, setSelected}}>
+            {/* <SelectedContext.Provider value = {{selected, setSelected}}> */}
 
                 <Route exact path = "/">
                     <HomePage/>
@@ -153,9 +150,8 @@ const App = () => {
                 </Route>
                 
 
-            </SelectedContext.Provider>
+            {/* </SelectedContext.Provider> */}
             </SearchContext.Provider>
-            </LocationContext.Provider>
             </UserContext.Provider>
             </AllTVShowsContext.Provider>
             </AllNewReleases.Provider>

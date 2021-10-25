@@ -1,4 +1,6 @@
-import { useContext} from 'react'
+import {useLocation} from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
 
 /* Importing Components */
 import Header from "../components/Header.js"
@@ -9,15 +11,28 @@ import { ListGroupItem } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import { Image } from 'react-bootstrap';
 
+/* Import Data Access Object */
+import RESTAPI from '../modules/DAO.js';
 
-import SelectedContext from '../context/SelectedContext.js';
+
+// import SelectedContext from '../context/SelectedContext.js';
 
 const DetailsPage = () => {
 
-    const {selected} = useContext(SelectedContext);
-   
-    console.log(selected)
+    const [selected, setSelected] = useState({})
+    const rootLocation = useLocation();
 
+    useEffect(()=>{
+
+        const fetchData = new RESTAPI();
+        // console.log(rootLocation.pathname)
+
+        fetchData.getAPIData(`http://localhost:3500${rootLocation.pathname}`, "GET")
+        .then((data) => {
+            setSelected(data.data)
+        })
+
+    },[]);
 
     return (
 
@@ -52,8 +67,10 @@ const DetailsPage = () => {
                             <Card.Body className="trailer">
                                 
                                 <div>
-                                    <iframe width="660" height="315" src={`${selected.trailer}`} title="YouTube video player" frameborder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <iframe width="660" height="315" src={`${selected.trailer}`} 
+                                    title="YouTube video player" frameBorder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                                    </iframe>
                                 </div>
                             </Card.Body>
                             
@@ -73,7 +90,7 @@ const DetailsPage = () => {
                         </div>
 
                     </div>
-                </main>
+                </main> 
             <Footer/>         
 
         </div>

@@ -30,7 +30,7 @@ const LogIn = () => {
             email: user.email,
             password: user.password
    
-        })// getAPIData(endPoint, Type, toStringify)
+        })
         .then(data => {
 
             const isAdmin = data.admin
