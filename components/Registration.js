@@ -8,8 +8,6 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-
-
 const Registration = () => {
 
     const {user, setUser} = useContext(UserContext);
@@ -18,7 +16,6 @@ const Registration = () => {
     const addNewUser = (evt) => {
 
         evt.preventDefault(); //Prevents Default Behaviour of the evt (in this case submit)
-
 
         fetch("http://localhost:3500/user", {
         
@@ -32,11 +29,9 @@ const Registration = () => {
                 lastName: user.lastName,
                 email: user.email,
                 password: user.password
-
             })
                    
         })
-
         .then(res => res.json())
         .then(data => {
 
@@ -54,7 +49,6 @@ const Registration = () => {
             {
                 redirect.push("/user/dashBoard")
                 alert('Registration Successful for User')
-
             }
             else
             {

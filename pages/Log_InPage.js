@@ -15,7 +15,7 @@ const Log_InPage = () => {
             
             <Header/>
 
-            <main>
+            <main style={{minHeight: "80vh"}}>
                 <LogIn/>
             </main>
 

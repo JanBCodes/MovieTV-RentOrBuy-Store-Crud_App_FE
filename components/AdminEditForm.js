@@ -1,22 +1,46 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom'; // Read up More
-import { useState } from 'react';
-
-// import { Link } from "react-router-dom";
+import { useHistory, useLocation } from 'react-router-dom'; // Read up More
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router';
 
 /* Importing Components */
-import Header from "../components/Header.js"
-import Footer from "../components/Footer.js"
+import Header from "./Header.js"
+import Footer from "./Footer.js"
 
 /* Importing BS Components */
 import Form from 'react-bootstrap/Form'
 import { Col, Row, Button} from 'react-bootstrap'
-// import { FloatingLabel } from 'react-bootstrap';
+
+/* Import Data Access Object */
+import RESTAPI from '../modules/DAO.js';
 
 
-const AdminCreatePage = () => {
 
-	const redirect = useHistory();
+const AdminEditForm = () => {
+
+    // const [dataToEdit, setDatatoEdit] = useState({})
+    const rootLocation = useLocation();
+    const redirect = useHistory();
+    const params = useParams();
+
+    console.log(params) // {id: '123456'}
+    console.log(rootLocation) // http://localhost:3500/EVERYTHINGAFTERTHISISPATHNAME
+
+
+    useEffect(()=>{
+
+        const fetchData = new RESTAPI();
+        // console.log(rootLocation.pathname)
+
+        fetchData.getAPIData(`http://localhost:3500/${rootLocation.pathname}`, "GET")
+        .then((data) => {
+
+            // setDatatoEdit(data.data)
+			alert(data.message)
+            console.log(data.data)
+        })
+
+    },[]);
 
 	const genre = [
 		"Action",
@@ -72,11 +96,9 @@ const AdminCreatePage = () => {
 
 	})
 
-	const submitNewMovie = (e) => {
+	const editItem = (e) => {
 
 		e.preventDefault();
-
-		// console.log(e.target)
 
 		const formData = new FormData();
 
@@ -97,92 +119,41 @@ const AdminCreatePage = () => {
 		formData.append('smallPosterImg', form.smallPosterImg.files[0]);
 		formData.append('largePosterImg', form.largePosterImg.files[0]);
 
-		// if(form.smallPosterImg.files[0] === null)
-		// {
-		// 	formData.append('smallPosterImg', form.smallPosterImg);
-		// }
-		// else
-		// {
-		// 	formData.append('smallPosterImg', form.smallPosterImg.files[0]);
 
-		// }
+        fetch(`http://localhost:3500/admin/${form.type}/${params}` ,{
 
-		// if(form.largePosterImg.files[0] === null)
-		// {
-		// 	formData.append('largePosterImg', form.largePosterImg);
-		// }
-		// else
-		// {
-		// 	formData.append('largePosterImg', form.largePosterImg.files[0]);
-		// }
+                method: 'PUT',
+                body: formData
+        })
+        .then(res => res.json())
+        .then(json => {
 
-		console.log(form.type)
+            console.log(json)
+            alert("New Movie Added")
+        redirect.push("/admin/dashboard") 
+        })
+        .catch(err=>{
 
-		if(form.type === 'movies')
-		{
-			fetch("http://localhost:3500/admin/movies",{
-			
-				method:"POST",
-			 	body: formData
-			})
-			.then(res => res.json())
-			.then(json => {
- 
-			 console.log(json)
-			 alert("New Movie Added")
-			 redirect.push("/admin/dashboard") 
-			})
-			.catch(err=>{
+        redirect.push("/admin/dashboard")
 
-			 redirect.push("/admin/dashboard")
+        })
 
-			})
-		}
+    }
 
-		if(form.type === 'tvShows')
-		{
-			fetch("http://localhost:3500/admin/tvShows",{
-			
-				method:"POST",
-			 	body: formData
-			})
-			.then(res => res.json())
-			.then(json => {
-
-			alert("New Tv Show Added")
-
-			 console.log(json.message)
-			 redirect.push("/admin/Dashboard")
-
-			})
-			.catch(err=>{
-	
-				console.log(err)
-	
-			})
-
-		}	
+    return (
 
 
+        <div className="adminEditPage">
 
-	} //end of submitNewMovie FN
+            <Header/>
 
-	return (
+            <main>
 
-		<div className="adminCreatePage">
+                <h3 className="sectionHeading"> 
+                    Welcome Admin - Update{/* Admin Name */}
+                </h3>
 
-			<Header/>
-
-			<main>
-
-				<h3 className="sectionHeading">
-					Welcome Admin  {/* Admin Name */}
-				</h3>
-				<h3 className="sectionHeading">
-					Create A New Movie / TV Show
-				</h3>
-
-				<Form onSubmit={submitNewMovie}>
+				<Form onSubmit={editItem}>
 				{/* <Form method="GET"> */}
 
 					<Form.Group as={Row} className="mb-3" >
@@ -525,21 +496,19 @@ const AdminCreatePage = () => {
 
 					<Form.Group as={Row} className="mb-3">
 					<Col sm={{ span: 10, offset: 2 }}>
-						<Button type="submit"> Create / Add </Button>
+						<Button type="submit"> Update </Button>
 					</Col>
 					</Form.Group>
 
-
 				</Form>
 
-				{/* {console.log(form)} */}
+            </main>
 
-			</main>
+            <Footer/>         
 
-			<Footer/>
+        </div>
 
-		</div>
-	)
+    )
 }
 
-export default AdminCreatePage;
+export default AdminEditForm

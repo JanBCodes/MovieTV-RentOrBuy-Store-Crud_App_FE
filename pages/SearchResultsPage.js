@@ -10,13 +10,13 @@ import Header from "../components/Header.js"
 import Footer from "../components/Footer.js"
 
 /* Importing Context */
-import searchContext from '../context/searchContext';
+import searchContext from '../context/SearchContext';
 
 const SearchResultsPage = () => {
 
     const {searchResults} = useContext(searchContext);
 
-    if(searchResults.total > 0)
+    if(searchResults.total > 0 || searchResults === undefined)
     {
         return (<>
     
@@ -34,8 +34,7 @@ const SearchResultsPage = () => {
 
                         <Card className="cards" id={data._id} key={data._id}>
 
-                            <Card.Body id="oneCard" style={{backgroundImage: `url({data.largePosterImg})`}} >
-                            </Card.Body>
+                            <Card.Body id="oneCard" style={{backgroundImage: `url(${data.largePosterImg})`}} >
                             
                             <Card.Body className="cardTitle">
                                 <Card.Title> 
@@ -47,6 +46,8 @@ const SearchResultsPage = () => {
                                 <Card.Text>
                                     {data.synopsis.substring(0,150)}...
                                 </Card.Text>
+                            </Card.Body>
+
                             </Card.Body>
 
                         </Card>

@@ -2,7 +2,7 @@ import React,  { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom'; // Read up More
 
 /* Importing Context */
-import searchContext from '../context/searchContext';
+import searchContext from '../context/SearchContext';
 
 /* Import Data Access Object */
 import RESTAPI from '../modules/DAO.js';
@@ -22,9 +22,13 @@ const SearchBar = () => {
         {
             input = "movies"
         }
-        else
+        else if(e.target.value === "tvShows")
         {
             input = "tvShows"
+        }
+        else
+        {
+            input = ""
         }
 
     }

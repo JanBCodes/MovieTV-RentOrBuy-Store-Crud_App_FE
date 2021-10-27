@@ -14,7 +14,7 @@
     .slideCard
     {
 
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
 }  
@@ -35,6 +35,11 @@
     {
         margin: .2rem;
     } */
+
+    #companyName
+{
+    font-size: 1rem;
+}
 
     .slideCard
     {

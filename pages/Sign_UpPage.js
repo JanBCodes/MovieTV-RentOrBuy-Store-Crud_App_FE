@@ -11,7 +11,9 @@ const Sign_UpPage = () => {
             
             <Header/>
 
-            <Register/>
+            <main>
+                <Register/>
+            </main>
 
             <Footer/>     
 
